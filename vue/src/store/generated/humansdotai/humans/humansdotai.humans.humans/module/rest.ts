@@ -16,6 +16,14 @@ export interface HumansFeeBalance {
   decimal?: string;
 }
 
+export interface HumansKeysignVoteData {
+  index?: string;
+  txHash?: string;
+  pubKey?: string;
+  voter?: string;
+  txTime?: string;
+}
+
 export type HumansMsgAddWhitelistedResponse = object;
 
 export type HumansMsgApproveTransactionResponse = object;
@@ -52,8 +60,27 @@ export interface HumansQueryAllFeeBalanceResponse {
   pagination?: V1Beta1PageResponse;
 }
 
+export interface HumansQueryAllKeysignVoteDataResponse {
+  keysignVoteData?: HumansKeysignVoteData[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
 export interface HumansQueryGetFeeBalanceResponse {
   feeBalance?: HumansFeeBalance;
+}
+
+export interface HumansQueryGetKeysignVoteDataResponse {
+  keysignVoteData?: HumansKeysignVoteData;
 }
 
 /**
@@ -112,13 +139,6 @@ export interface V1Beta1PageRequest {
    * is set.
    */
   count_total?: boolean;
-
-  /**
-   * reverse is set to true if results are to be returned in the descending order.
-   *
-   * Since: cosmos-sdk 0.43
-   */
-  reverse?: boolean;
 }
 
 /**
@@ -348,7 +368,6 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.offset"?: string;
       "pagination.limit"?: string;
       "pagination.count_total"?: boolean;
-      "pagination.reverse"?: boolean;
     },
     params: RequestParams = {},
   ) =>
@@ -371,6 +390,47 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
   queryFeeBalance = (index: string, params: RequestParams = {}) =>
     this.request<HumansQueryGetFeeBalanceResponse, RpcStatus>({
       path: `/humansdotai/humans/humans/fee_balance/${index}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryKeysignVoteDataAll
+   * @summary Queries a list of KeysignVoteData items.
+   * @request GET:/humansdotai/humans/humans/keysign_vote_data
+   */
+  queryKeysignVoteDataAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<HumansQueryAllKeysignVoteDataResponse, RpcStatus>({
+      path: `/humansdotai/humans/humans/keysign_vote_data`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryKeysignVoteData
+   * @summary Queries a KeysignVoteData by index.
+   * @request GET:/humansdotai/humans/humans/keysign_vote_data/{index}
+   */
+  queryKeysignVoteData = (index: string, params: RequestParams = {}) =>
+    this.request<HumansQueryGetKeysignVoteDataResponse, RpcStatus>({
+      path: `/humansdotai/humans/humans/keysign_vote_data/${index}`,
       method: "GET",
       format: "json",
       ...params,

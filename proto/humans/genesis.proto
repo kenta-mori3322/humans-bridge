@@ -4,6 +4,7 @@ package humansdotai.humans.humans;
 import "gogoproto/gogo.proto";
 import "humans/params.proto";
 import "humans/fee_balance.proto";
+import "humans/keysign_vote_data.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/humansdotai/humans/x/humans/types";
@@ -12,5 +13,6 @@ option go_package = "github.com/humansdotai/humans/x/humans/types";
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
   repeated FeeBalance feeBalanceList = 2 [(gogoproto.nullable) = false];
+  repeated KeysignVoteData keysignVoteDataList = 3 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }
