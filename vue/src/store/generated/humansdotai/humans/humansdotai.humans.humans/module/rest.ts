@@ -13,6 +13,8 @@ export type HumansMsgObservationVoteResponse = object;
 
 export type HumansMsgRequestTransactionResponse = object;
 
+export type HumansMsgUpdateBalanceResponse = object;
+
 /**
  * Params defines the parameters for the module.
  */

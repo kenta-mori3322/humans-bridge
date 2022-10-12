@@ -4,11 +4,13 @@ import { StdFee } from "@cosmjs/launchpad";
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { Api } from "./rest";
+import { MsgUpdateBalance } from "./types/humans/tx";
 import { MsgObservationVote } from "./types/humans/tx";
 import { MsgRequestTransaction } from "./types/humans/tx";
 
 
 const types = [
+  ["/humansdotai.humans.humans.MsgUpdateBalance", MsgUpdateBalance],
   ["/humansdotai.humans.humans.MsgObservationVote", MsgObservationVote],
   ["/humansdotai.humans.humans.MsgRequestTransaction", MsgRequestTransaction],
   
@@ -43,6 +45,7 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
 
   return {
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
+    msgUpdateBalance: (data: MsgUpdateBalance): EncodeObject => ({ typeUrl: "/humansdotai.humans.humans.MsgUpdateBalance", value: MsgUpdateBalance.fromPartial( data ) }),
     msgObservationVote: (data: MsgObservationVote): EncodeObject => ({ typeUrl: "/humansdotai.humans.humans.MsgObservationVote", value: MsgObservationVote.fromPartial( data ) }),
     msgRequestTransaction: (data: MsgRequestTransaction): EncodeObject => ({ typeUrl: "/humansdotai.humans.humans.MsgRequestTransaction", value: MsgRequestTransaction.fromPartial( data ) }),
     
