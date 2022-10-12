@@ -9,6 +9,7 @@ import {
 import { KeysignVoteData } from "../humans/keysign_vote_data";
 import { ObserveVote } from "../humans/observe_vote";
 import { PoolBalance } from "../humans/pool_balance";
+import { Pubkeys } from "../humans/pubkeys";
 
 export const protobufPackage = "humansdotai.humans.humans";
 
@@ -86,6 +87,23 @@ export interface QueryAllPoolBalanceRequest {
 
 export interface QueryAllPoolBalanceResponse {
   poolBalance: PoolBalance[];
+  pagination: PageResponse | undefined;
+}
+
+export interface QueryGetPubkeysRequest {
+  index: string;
+}
+
+export interface QueryGetPubkeysResponse {
+  pubkeys: Pubkeys | undefined;
+}
+
+export interface QueryAllPubkeysRequest {
+  pagination: PageRequest | undefined;
+}
+
+export interface QueryAllPubkeysResponse {
+  pubkeys: Pubkeys[];
   pagination: PageResponse | undefined;
 }
 
@@ -1472,6 +1490,296 @@ export const QueryAllPoolBalanceResponse = {
   },
 };
 
+const baseQueryGetPubkeysRequest: object = { index: "" };
+
+export const QueryGetPubkeysRequest = {
+  encode(
+    message: QueryGetPubkeysRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.index !== "") {
+      writer.uint32(10).string(message.index);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): QueryGetPubkeysRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseQueryGetPubkeysRequest } as QueryGetPubkeysRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.index = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetPubkeysRequest {
+    const message = { ...baseQueryGetPubkeysRequest } as QueryGetPubkeysRequest;
+    if (object.index !== undefined && object.index !== null) {
+      message.index = String(object.index);
+    } else {
+      message.index = "";
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetPubkeysRequest): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = message.index);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetPubkeysRequest>
+  ): QueryGetPubkeysRequest {
+    const message = { ...baseQueryGetPubkeysRequest } as QueryGetPubkeysRequest;
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    } else {
+      message.index = "";
+    }
+    return message;
+  },
+};
+
+const baseQueryGetPubkeysResponse: object = {};
+
+export const QueryGetPubkeysResponse = {
+  encode(
+    message: QueryGetPubkeysResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.pubkeys !== undefined) {
+      Pubkeys.encode(message.pubkeys, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): QueryGetPubkeysResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryGetPubkeysResponse,
+    } as QueryGetPubkeysResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pubkeys = Pubkeys.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetPubkeysResponse {
+    const message = {
+      ...baseQueryGetPubkeysResponse,
+    } as QueryGetPubkeysResponse;
+    if (object.pubkeys !== undefined && object.pubkeys !== null) {
+      message.pubkeys = Pubkeys.fromJSON(object.pubkeys);
+    } else {
+      message.pubkeys = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetPubkeysResponse): unknown {
+    const obj: any = {};
+    message.pubkeys !== undefined &&
+      (obj.pubkeys = message.pubkeys
+        ? Pubkeys.toJSON(message.pubkeys)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetPubkeysResponse>
+  ): QueryGetPubkeysResponse {
+    const message = {
+      ...baseQueryGetPubkeysResponse,
+    } as QueryGetPubkeysResponse;
+    if (object.pubkeys !== undefined && object.pubkeys !== null) {
+      message.pubkeys = Pubkeys.fromPartial(object.pubkeys);
+    } else {
+      message.pubkeys = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllPubkeysRequest: object = {};
+
+export const QueryAllPubkeysRequest = {
+  encode(
+    message: QueryAllPubkeysRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): QueryAllPubkeysRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseQueryAllPubkeysRequest } as QueryAllPubkeysRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllPubkeysRequest {
+    const message = { ...baseQueryAllPubkeysRequest } as QueryAllPubkeysRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllPubkeysRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllPubkeysRequest>
+  ): QueryAllPubkeysRequest {
+    const message = { ...baseQueryAllPubkeysRequest } as QueryAllPubkeysRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllPubkeysResponse: object = {};
+
+export const QueryAllPubkeysResponse = {
+  encode(
+    message: QueryAllPubkeysResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    for (const v of message.pubkeys) {
+      Pubkeys.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): QueryAllPubkeysResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryAllPubkeysResponse,
+    } as QueryAllPubkeysResponse;
+    message.pubkeys = [];
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pubkeys.push(Pubkeys.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllPubkeysResponse {
+    const message = {
+      ...baseQueryAllPubkeysResponse,
+    } as QueryAllPubkeysResponse;
+    message.pubkeys = [];
+    if (object.pubkeys !== undefined && object.pubkeys !== null) {
+      for (const e of object.pubkeys) {
+        message.pubkeys.push(Pubkeys.fromJSON(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllPubkeysResponse): unknown {
+    const obj: any = {};
+    if (message.pubkeys) {
+      obj.pubkeys = message.pubkeys.map((e) =>
+        e ? Pubkeys.toJSON(e) : undefined
+      );
+    } else {
+      obj.pubkeys = [];
+    }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllPubkeysResponse>
+  ): QueryAllPubkeysResponse {
+    const message = {
+      ...baseQueryAllPubkeysResponse,
+    } as QueryAllPubkeysResponse;
+    message.pubkeys = [];
+    if (object.pubkeys !== undefined && object.pubkeys !== null) {
+      for (const e of object.pubkeys) {
+        message.pubkeys.push(Pubkeys.fromPartial(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -1508,6 +1816,10 @@ export interface Query {
   PoolBalanceAll(
     request: QueryAllPoolBalanceRequest
   ): Promise<QueryAllPoolBalanceResponse>;
+  /** Queries a Pubkeys by index. */
+  Pubkeys(request: QueryGetPubkeysRequest): Promise<QueryGetPubkeysResponse>;
+  /** Queries a list of Pubkeys items. */
+  PubkeysAll(request: QueryAllPubkeysRequest): Promise<QueryAllPubkeysResponse>;
 }
 
 export class QueryClientImpl implements Query {
@@ -1634,6 +1946,32 @@ export class QueryClientImpl implements Query {
     );
     return promise.then((data) =>
       QueryAllPoolBalanceResponse.decode(new Reader(data))
+    );
+  }
+
+  Pubkeys(request: QueryGetPubkeysRequest): Promise<QueryGetPubkeysResponse> {
+    const data = QueryGetPubkeysRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "humansdotai.humans.humans.Query",
+      "Pubkeys",
+      data
+    );
+    return promise.then((data) =>
+      QueryGetPubkeysResponse.decode(new Reader(data))
+    );
+  }
+
+  PubkeysAll(
+    request: QueryAllPubkeysRequest
+  ): Promise<QueryAllPubkeysResponse> {
+    const data = QueryAllPubkeysRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "humansdotai.humans.humans.Query",
+      "PubkeysAll",
+      data
+    );
+    return promise.then((data) =>
+      QueryAllPubkeysResponse.decode(new Reader(data))
     );
   }
 }

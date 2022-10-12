@@ -9,6 +9,7 @@ import "humans/fee_balance.proto";
 import "humans/keysign_vote_data.proto";
 import "humans/observe_vote.proto";
 import "humans/pool_balance.proto";
+import "humans/pubkeys.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/humansdotai/humans/x/humans/types";
@@ -57,6 +58,16 @@ service Query {
 	// Queries a list of PoolBalance items.
 	rpc PoolBalanceAll(QueryAllPoolBalanceRequest) returns (QueryAllPoolBalanceResponse) {
 		option (google.api.http).get = "/humansdotai/humans/humans/pool_balance";
+	}
+
+// Queries a Pubkeys by index.
+	rpc Pubkeys(QueryGetPubkeysRequest) returns (QueryGetPubkeysResponse) {
+		option (google.api.http).get = "/humansdotai/humans/humans/pubkeys/{index}";
+	}
+
+	// Queries a list of Pubkeys items.
+	rpc PubkeysAll(QueryAllPubkeysRequest) returns (QueryAllPubkeysResponse) {
+		option (google.api.http).get = "/humansdotai/humans/humans/pubkeys";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -140,6 +151,24 @@ message QueryAllPoolBalanceRequest {
 
 message QueryAllPoolBalanceResponse {
 	repeated PoolBalance poolBalance = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetPubkeysRequest {
+	  string index = 1;
+
+}
+
+message QueryGetPubkeysResponse {
+	Pubkeys pubkeys = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllPubkeysRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllPubkeysResponse {
+	repeated Pubkeys pubkeys = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

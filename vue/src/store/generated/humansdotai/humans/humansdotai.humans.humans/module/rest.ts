@@ -64,6 +64,14 @@ export interface HumansPoolBalance {
   decimal?: string;
 }
 
+export interface HumansPubkeys {
+  index?: string;
+  moniker?: string;
+  pubkey?: string;
+  issigner?: string;
+  timeat?: string;
+}
+
 export interface HumansQueryAllFeeBalanceResponse {
   feeBalance?: HumansFeeBalance[];
 
@@ -124,6 +132,21 @@ export interface HumansQueryAllPoolBalanceResponse {
   pagination?: V1Beta1PageResponse;
 }
 
+export interface HumansQueryAllPubkeysResponse {
+  pubkeys?: HumansPubkeys[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
 export interface HumansQueryGetFeeBalanceResponse {
   feeBalance?: HumansFeeBalance;
 }
@@ -138,6 +161,10 @@ export interface HumansQueryGetObserveVoteResponse {
 
 export interface HumansQueryGetPoolBalanceResponse {
   poolBalance?: HumansPoolBalance;
+}
+
+export interface HumansQueryGetPubkeysResponse {
+  pubkeys?: HumansPubkeys;
 }
 
 /**
@@ -586,6 +613,47 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
   queryPoolBalance = (index: string, params: RequestParams = {}) =>
     this.request<HumansQueryGetPoolBalanceResponse, RpcStatus>({
       path: `/humansdotai/humans/humans/pool_balance/${index}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryPubkeysAll
+   * @summary Queries a list of Pubkeys items.
+   * @request GET:/humansdotai/humans/humans/pubkeys
+   */
+  queryPubkeysAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<HumansQueryAllPubkeysResponse, RpcStatus>({
+      path: `/humansdotai/humans/humans/pubkeys`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryPubkeys
+   * @summary Queries a Pubkeys by index.
+   * @request GET:/humansdotai/humans/humans/pubkeys/{index}
+   */
+  queryPubkeys = (index: string, params: RequestParams = {}) =>
+    this.request<HumansQueryGetPubkeysResponse, RpcStatus>({
+      path: `/humansdotai/humans/humans/pubkeys/${index}`,
       method: "GET",
       format: "json",
       ...params,

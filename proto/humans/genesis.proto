@@ -7,6 +7,7 @@ import "humans/fee_balance.proto";
 import "humans/keysign_vote_data.proto";
 import "humans/observe_vote.proto";
 import "humans/pool_balance.proto";
+import "humans/pubkeys.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/humansdotai/humans/x/humans/types";
@@ -18,5 +19,6 @@ message GenesisState {
   repeated KeysignVoteData keysignVoteDataList = 3 [(gogoproto.nullable) = false];
   repeated ObserveVote observeVoteList = 4 [(gogoproto.nullable) = false];
   repeated PoolBalance poolBalanceList = 5 [(gogoproto.nullable) = false];
+  repeated Pubkeys pubkeysList = 6 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }
