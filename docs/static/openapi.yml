@@ -50690,6 +50690,8 @@ definitions:
     type: object
   humansdotai.humans.humans.MsgApproveTransactionResponse:
     type: object
+  humansdotai.humans.humans.MsgKeysignVoteResponse:
+    type: object
   humansdotai.humans.humans.MsgObservationVoteResponse:
     type: object
   humansdotai.humans.humans.MsgRequestTransactionResponse:

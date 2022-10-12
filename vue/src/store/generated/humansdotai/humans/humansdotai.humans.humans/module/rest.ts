@@ -13,6 +13,8 @@ export type HumansMsgAddWhitelistedResponse = object;
 
 export type HumansMsgApproveTransactionResponse = object;
 
+export type HumansMsgKeysignVoteResponse = object;
+
 export type HumansMsgObservationVoteResponse = object;
 
 export type HumansMsgRequestTransactionResponse = object;

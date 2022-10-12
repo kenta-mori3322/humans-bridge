@@ -7,13 +7,14 @@ option go_package = "github.com/humansdotai/humans/x/humans/types";
 
 // Msg defines the Msg service.
 service Msg {
-      rpc RequestTransaction(MsgRequestTransaction) returns (MsgRequestTransactionResponse);
+  rpc RequestTransaction(MsgRequestTransaction) returns (MsgRequestTransactionResponse);
   rpc ObservationVote(MsgObservationVote) returns (MsgObservationVoteResponse);
   rpc UpdateBalance(MsgUpdateBalance) returns (MsgUpdateBalanceResponse);
   rpc ApproveTransaction(MsgApproveTransaction) returns (MsgApproveTransactionResponse);
   rpc TransferPoolcoin(MsgTransferPoolcoin) returns (MsgTransferPoolcoinResponse);
   rpc AddWhitelisted(MsgAddWhitelisted) returns (MsgAddWhitelistedResponse);
   rpc SetAdmin(MsgSetAdmin) returns (MsgSetAdminResponse);
+  rpc KeysignVote(MsgKeysignVote) returns (MsgKeysignVoteResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -85,6 +86,15 @@ message MsgSetAdmin {
 }
 
 message MsgSetAdminResponse {
+}
+
+message MsgKeysignVote {
+  string creator = 1;
+  string txHash = 2;
+  string pubKey = 3;
+}
+
+message MsgKeysignVoteResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message

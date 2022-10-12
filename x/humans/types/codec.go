@@ -15,6 +15,7 @@ func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterConcrete(&MsgTransferPoolcoin{}, "humans/TransferPoolcoin", nil)
 	cdc.RegisterConcrete(&MsgAddWhitelisted{}, "humans/AddWhitelisted", nil)
 	cdc.RegisterConcrete(&MsgSetAdmin{}, "humans/SetAdmin", nil)
+	cdc.RegisterConcrete(&MsgKeysignVote{}, "humans/KeysignVote", nil)
 	// this line is used by starport scaffolding # 2
 }
 
@@ -39,6 +40,9 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	)
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgSetAdmin{},
+	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgKeysignVote{},
 	)
 	// this line is used by starport scaffolding # 3
 
