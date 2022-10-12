@@ -70,6 +70,14 @@ func TestGenesisState_Validate(t *testing.T) {
 						Index: "1",
 					},
 				},
+				TransactionDataList: []types.TransactionData{
+					{
+						Index: "0",
+					},
+					{
+						Index: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -148,6 +156,20 @@ func TestGenesisState_Validate(t *testing.T) {
 			desc: "duplicated superadmin",
 			genState: &types.GenesisState{
 				SuperadminList: []types.Superadmin{
+					{
+						Index: "0",
+					},
+					{
+						Index: "0",
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated transactionData",
+			genState: &types.GenesisState{
+				TransactionDataList: []types.TransactionData{
 					{
 						Index: "0",
 					},

@@ -11,6 +11,7 @@ import "humans/observe_vote.proto";
 import "humans/pool_balance.proto";
 import "humans/pubkeys.proto";
 import "humans/superadmin.proto";
+import "humans/transaction_data.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/humansdotai/humans/x/humans/types";
@@ -79,6 +80,16 @@ service Query {
 	// Queries a list of Superadmin items.
 	rpc SuperadminAll(QueryAllSuperadminRequest) returns (QueryAllSuperadminResponse) {
 		option (google.api.http).get = "/humansdotai/humans/humans/superadmin";
+	}
+
+// Queries a TransactionData by index.
+	rpc TransactionData(QueryGetTransactionDataRequest) returns (QueryGetTransactionDataResponse) {
+		option (google.api.http).get = "/humansdotai/humans/humans/transaction_data/{index}";
+	}
+
+	// Queries a list of TransactionData items.
+	rpc TransactionDataAll(QueryAllTransactionDataRequest) returns (QueryAllTransactionDataResponse) {
+		option (google.api.http).get = "/humansdotai/humans/humans/transaction_data";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -198,6 +209,24 @@ message QueryAllSuperadminRequest {
 
 message QueryAllSuperadminResponse {
 	repeated Superadmin superadmin = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetTransactionDataRequest {
+	  string index = 1;
+
+}
+
+message QueryGetTransactionDataResponse {
+	TransactionData transactionData = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllTransactionDataRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllTransactionDataResponse {
+	repeated TransactionData transactionData = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
