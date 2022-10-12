@@ -9,6 +9,8 @@
  * ---------------------------------------------------------------
  */
 
+export type HumansMsgApproveTransactionResponse = object;
+
 export type HumansMsgObservationVoteResponse = object;
 
 export type HumansMsgRequestTransactionResponse = object;
