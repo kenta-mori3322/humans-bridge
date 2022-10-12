@@ -50694,6 +50694,8 @@ definitions:
     type: object
   humansdotai.humans.humans.MsgRequestTransactionResponse:
     type: object
+  humansdotai.humans.humans.MsgSetAdminResponse:
+    type: object
   humansdotai.humans.humans.MsgTransferPoolcoinResponse:
     type: object
   humansdotai.humans.humans.MsgUpdateBalanceResponse:

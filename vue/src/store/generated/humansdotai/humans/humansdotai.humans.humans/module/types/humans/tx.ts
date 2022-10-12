@@ -60,6 +60,12 @@ export interface MsgAddWhitelisted {
 
 export interface MsgAddWhitelistedResponse {}
 
+export interface MsgSetAdmin {
+  creator: string;
+}
+
+export interface MsgSetAdminResponse {}
+
 const baseMsgRequestTransaction: object = {
   creator: "",
   originChain: "",
@@ -1109,6 +1115,99 @@ export const MsgAddWhitelistedResponse = {
   },
 };
 
+const baseMsgSetAdmin: object = { creator: "" };
+
+export const MsgSetAdmin = {
+  encode(message: MsgSetAdmin, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgSetAdmin {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgSetAdmin } as MsgSetAdmin;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgSetAdmin {
+    const message = { ...baseMsgSetAdmin } as MsgSetAdmin;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgSetAdmin): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgSetAdmin>): MsgSetAdmin {
+    const message = { ...baseMsgSetAdmin } as MsgSetAdmin;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgSetAdminResponse: object = {};
+
+export const MsgSetAdminResponse = {
+  encode(_: MsgSetAdminResponse, writer: Writer = Writer.create()): Writer {
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgSetAdminResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgSetAdminResponse } as MsgSetAdminResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgSetAdminResponse {
+    const message = { ...baseMsgSetAdminResponse } as MsgSetAdminResponse;
+    return message;
+  },
+
+  toJSON(_: MsgSetAdminResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: DeepPartial<MsgSetAdminResponse>): MsgSetAdminResponse {
+    const message = { ...baseMsgSetAdminResponse } as MsgSetAdminResponse;
+    return message;
+  },
+};
+
 /** Msg defines the Msg service. */
 export interface Msg {
   RequestTransaction(
@@ -1124,10 +1223,11 @@ export interface Msg {
   TransferPoolcoin(
     request: MsgTransferPoolcoin
   ): Promise<MsgTransferPoolcoinResponse>;
-  /** this line is used by starport scaffolding # proto/tx/rpc */
   AddWhitelisted(
     request: MsgAddWhitelisted
   ): Promise<MsgAddWhitelistedResponse>;
+  /** this line is used by starport scaffolding # proto/tx/rpc */
+  SetAdmin(request: MsgSetAdmin): Promise<MsgSetAdminResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -1215,6 +1315,16 @@ export class MsgClientImpl implements Msg {
     return promise.then((data) =>
       MsgAddWhitelistedResponse.decode(new Reader(data))
     );
+  }
+
+  SetAdmin(request: MsgSetAdmin): Promise<MsgSetAdminResponse> {
+    const data = MsgSetAdmin.encode(request).finish();
+    const promise = this.rpc.request(
+      "humansdotai.humans.humans.Msg",
+      "SetAdmin",
+      data
+    );
+    return promise.then((data) => MsgSetAdminResponse.decode(new Reader(data)));
   }
 }
 

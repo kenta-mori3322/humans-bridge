@@ -13,6 +13,7 @@ service Msg {
   rpc ApproveTransaction(MsgApproveTransaction) returns (MsgApproveTransactionResponse);
   rpc TransferPoolcoin(MsgTransferPoolcoin) returns (MsgTransferPoolcoinResponse);
   rpc AddWhitelisted(MsgAddWhitelisted) returns (MsgAddWhitelistedResponse);
+  rpc SetAdmin(MsgSetAdmin) returns (MsgSetAdminResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -77,6 +78,13 @@ message MsgAddWhitelisted {
 }
 
 message MsgAddWhitelistedResponse {
+}
+
+message MsgSetAdmin {
+  string creator = 1;
+}
+
+message MsgSetAdminResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message

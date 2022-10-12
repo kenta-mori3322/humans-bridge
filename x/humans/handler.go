@@ -35,6 +35,9 @@ func NewHandler(k keeper.Keeper) sdk.Handler {
 		case *types.MsgAddWhitelisted:
 			res, err := msgServer.AddWhitelisted(sdk.WrapSDKContext(ctx), msg)
 			return sdk.WrapServiceResult(ctx, res, err)
+		case *types.MsgSetAdmin:
+			res, err := msgServer.SetAdmin(sdk.WrapSDKContext(ctx), msg)
+			return sdk.WrapServiceResult(ctx, res, err)
 			// this line is used by starport scaffolding # 1
 		default:
 			errMsg := fmt.Sprintf("unrecognized %s message type: %T", types.ModuleName, msg)

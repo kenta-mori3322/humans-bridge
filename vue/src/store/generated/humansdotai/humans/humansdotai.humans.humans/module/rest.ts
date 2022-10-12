@@ -17,6 +17,8 @@ export type HumansMsgObservationVoteResponse = object;
 
 export type HumansMsgRequestTransactionResponse = object;
 
+export type HumansMsgSetAdminResponse = object;
+
 export type HumansMsgTransferPoolcoinResponse = object;
 
 export type HumansMsgUpdateBalanceResponse = object;
