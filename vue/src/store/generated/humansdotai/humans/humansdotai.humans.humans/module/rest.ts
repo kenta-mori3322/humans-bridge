@@ -9,11 +9,15 @@
  * ---------------------------------------------------------------
  */
 
+export type HumansMsgAddWhitelistedResponse = object;
+
 export type HumansMsgApproveTransactionResponse = object;
 
 export type HumansMsgObservationVoteResponse = object;
 
 export type HumansMsgRequestTransactionResponse = object;
+
+export type HumansMsgTransferPoolcoinResponse = object;
 
 export type HumansMsgUpdateBalanceResponse = object;
 

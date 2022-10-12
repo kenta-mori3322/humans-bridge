@@ -44,6 +44,22 @@ export interface MsgApproveTransaction {
 
 export interface MsgApproveTransactionResponse {}
 
+export interface MsgTransferPoolcoin {
+  creator: string;
+  addr: string;
+  pool: string;
+  amt: string;
+}
+
+export interface MsgTransferPoolcoinResponse {}
+
+export interface MsgAddWhitelisted {
+  creator: string;
+  address: string;
+}
+
+export interface MsgAddWhitelistedResponse {}
+
 const baseMsgRequestTransaction: object = {
   creator: "",
   originChain: "",
@@ -803,6 +819,296 @@ export const MsgApproveTransactionResponse = {
   },
 };
 
+const baseMsgTransferPoolcoin: object = {
+  creator: "",
+  addr: "",
+  pool: "",
+  amt: "",
+};
+
+export const MsgTransferPoolcoin = {
+  encode(
+    message: MsgTransferPoolcoin,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.addr !== "") {
+      writer.uint32(18).string(message.addr);
+    }
+    if (message.pool !== "") {
+      writer.uint32(26).string(message.pool);
+    }
+    if (message.amt !== "") {
+      writer.uint32(34).string(message.amt);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgTransferPoolcoin {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgTransferPoolcoin } as MsgTransferPoolcoin;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.addr = reader.string();
+          break;
+        case 3:
+          message.pool = reader.string();
+          break;
+        case 4:
+          message.amt = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgTransferPoolcoin {
+    const message = { ...baseMsgTransferPoolcoin } as MsgTransferPoolcoin;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.addr !== undefined && object.addr !== null) {
+      message.addr = String(object.addr);
+    } else {
+      message.addr = "";
+    }
+    if (object.pool !== undefined && object.pool !== null) {
+      message.pool = String(object.pool);
+    } else {
+      message.pool = "";
+    }
+    if (object.amt !== undefined && object.amt !== null) {
+      message.amt = String(object.amt);
+    } else {
+      message.amt = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgTransferPoolcoin): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.addr !== undefined && (obj.addr = message.addr);
+    message.pool !== undefined && (obj.pool = message.pool);
+    message.amt !== undefined && (obj.amt = message.amt);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgTransferPoolcoin>): MsgTransferPoolcoin {
+    const message = { ...baseMsgTransferPoolcoin } as MsgTransferPoolcoin;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.addr !== undefined && object.addr !== null) {
+      message.addr = object.addr;
+    } else {
+      message.addr = "";
+    }
+    if (object.pool !== undefined && object.pool !== null) {
+      message.pool = object.pool;
+    } else {
+      message.pool = "";
+    }
+    if (object.amt !== undefined && object.amt !== null) {
+      message.amt = object.amt;
+    } else {
+      message.amt = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgTransferPoolcoinResponse: object = {};
+
+export const MsgTransferPoolcoinResponse = {
+  encode(
+    _: MsgTransferPoolcoinResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgTransferPoolcoinResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgTransferPoolcoinResponse,
+    } as MsgTransferPoolcoinResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgTransferPoolcoinResponse {
+    const message = {
+      ...baseMsgTransferPoolcoinResponse,
+    } as MsgTransferPoolcoinResponse;
+    return message;
+  },
+
+  toJSON(_: MsgTransferPoolcoinResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgTransferPoolcoinResponse>
+  ): MsgTransferPoolcoinResponse {
+    const message = {
+      ...baseMsgTransferPoolcoinResponse,
+    } as MsgTransferPoolcoinResponse;
+    return message;
+  },
+};
+
+const baseMsgAddWhitelisted: object = { creator: "", address: "" };
+
+export const MsgAddWhitelisted = {
+  encode(message: MsgAddWhitelisted, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.address !== "") {
+      writer.uint32(18).string(message.address);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgAddWhitelisted {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgAddWhitelisted } as MsgAddWhitelisted;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.address = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgAddWhitelisted {
+    const message = { ...baseMsgAddWhitelisted } as MsgAddWhitelisted;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.address !== undefined && object.address !== null) {
+      message.address = String(object.address);
+    } else {
+      message.address = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgAddWhitelisted): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.address !== undefined && (obj.address = message.address);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgAddWhitelisted>): MsgAddWhitelisted {
+    const message = { ...baseMsgAddWhitelisted } as MsgAddWhitelisted;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    } else {
+      message.address = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgAddWhitelistedResponse: object = {};
+
+export const MsgAddWhitelistedResponse = {
+  encode(
+    _: MsgAddWhitelistedResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgAddWhitelistedResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgAddWhitelistedResponse,
+    } as MsgAddWhitelistedResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgAddWhitelistedResponse {
+    const message = {
+      ...baseMsgAddWhitelistedResponse,
+    } as MsgAddWhitelistedResponse;
+    return message;
+  },
+
+  toJSON(_: MsgAddWhitelistedResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgAddWhitelistedResponse>
+  ): MsgAddWhitelistedResponse {
+    const message = {
+      ...baseMsgAddWhitelistedResponse,
+    } as MsgAddWhitelistedResponse;
+    return message;
+  },
+};
+
 /** Msg defines the Msg service. */
 export interface Msg {
   RequestTransaction(
@@ -812,10 +1118,16 @@ export interface Msg {
     request: MsgObservationVote
   ): Promise<MsgObservationVoteResponse>;
   UpdateBalance(request: MsgUpdateBalance): Promise<MsgUpdateBalanceResponse>;
-  /** this line is used by starport scaffolding # proto/tx/rpc */
   ApproveTransaction(
     request: MsgApproveTransaction
   ): Promise<MsgApproveTransactionResponse>;
+  TransferPoolcoin(
+    request: MsgTransferPoolcoin
+  ): Promise<MsgTransferPoolcoinResponse>;
+  /** this line is used by starport scaffolding # proto/tx/rpc */
+  AddWhitelisted(
+    request: MsgAddWhitelisted
+  ): Promise<MsgAddWhitelistedResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -874,6 +1186,34 @@ export class MsgClientImpl implements Msg {
     );
     return promise.then((data) =>
       MsgApproveTransactionResponse.decode(new Reader(data))
+    );
+  }
+
+  TransferPoolcoin(
+    request: MsgTransferPoolcoin
+  ): Promise<MsgTransferPoolcoinResponse> {
+    const data = MsgTransferPoolcoin.encode(request).finish();
+    const promise = this.rpc.request(
+      "humansdotai.humans.humans.Msg",
+      "TransferPoolcoin",
+      data
+    );
+    return promise.then((data) =>
+      MsgTransferPoolcoinResponse.decode(new Reader(data))
+    );
+  }
+
+  AddWhitelisted(
+    request: MsgAddWhitelisted
+  ): Promise<MsgAddWhitelistedResponse> {
+    const data = MsgAddWhitelisted.encode(request).finish();
+    const promise = this.rpc.request(
+      "humansdotai.humans.humans.Msg",
+      "AddWhitelisted",
+      data
+    );
+    return promise.then((data) =>
+      MsgAddWhitelistedResponse.decode(new Reader(data))
     );
   }
 }

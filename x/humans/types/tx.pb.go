@@ -483,6 +483,198 @@ func (m *MsgApproveTransactionResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgApproveTransactionResponse proto.InternalMessageInfo
 
+type MsgTransferPoolcoin struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Addr    string `protobuf:"bytes,2,opt,name=addr,proto3" json:"addr,omitempty"`
+	Pool    string `protobuf:"bytes,3,opt,name=pool,proto3" json:"pool,omitempty"`
+	Amt     string `protobuf:"bytes,4,opt,name=amt,proto3" json:"amt,omitempty"`
+}
+
+func (m *MsgTransferPoolcoin) Reset()         { *m = MsgTransferPoolcoin{} }
+func (m *MsgTransferPoolcoin) String() string { return proto.CompactTextString(m) }
+func (*MsgTransferPoolcoin) ProtoMessage()    {}
+func (*MsgTransferPoolcoin) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8e886a756dbee256, []int{8}
+}
+func (m *MsgTransferPoolcoin) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgTransferPoolcoin) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgTransferPoolcoin.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgTransferPoolcoin) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgTransferPoolcoin.Merge(m, src)
+}
+func (m *MsgTransferPoolcoin) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgTransferPoolcoin) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgTransferPoolcoin.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgTransferPoolcoin proto.InternalMessageInfo
+
+func (m *MsgTransferPoolcoin) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgTransferPoolcoin) GetAddr() string {
+	if m != nil {
+		return m.Addr
+	}
+	return ""
+}
+
+func (m *MsgTransferPoolcoin) GetPool() string {
+	if m != nil {
+		return m.Pool
+	}
+	return ""
+}
+
+func (m *MsgTransferPoolcoin) GetAmt() string {
+	if m != nil {
+		return m.Amt
+	}
+	return ""
+}
+
+type MsgTransferPoolcoinResponse struct {
+}
+
+func (m *MsgTransferPoolcoinResponse) Reset()         { *m = MsgTransferPoolcoinResponse{} }
+func (m *MsgTransferPoolcoinResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgTransferPoolcoinResponse) ProtoMessage()    {}
+func (*MsgTransferPoolcoinResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8e886a756dbee256, []int{9}
+}
+func (m *MsgTransferPoolcoinResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgTransferPoolcoinResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgTransferPoolcoinResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgTransferPoolcoinResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgTransferPoolcoinResponse.Merge(m, src)
+}
+func (m *MsgTransferPoolcoinResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgTransferPoolcoinResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgTransferPoolcoinResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgTransferPoolcoinResponse proto.InternalMessageInfo
+
+type MsgAddWhitelisted struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Address string `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+}
+
+func (m *MsgAddWhitelisted) Reset()         { *m = MsgAddWhitelisted{} }
+func (m *MsgAddWhitelisted) String() string { return proto.CompactTextString(m) }
+func (*MsgAddWhitelisted) ProtoMessage()    {}
+func (*MsgAddWhitelisted) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8e886a756dbee256, []int{10}
+}
+func (m *MsgAddWhitelisted) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgAddWhitelisted) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgAddWhitelisted.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgAddWhitelisted) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgAddWhitelisted.Merge(m, src)
+}
+func (m *MsgAddWhitelisted) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgAddWhitelisted) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgAddWhitelisted.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgAddWhitelisted proto.InternalMessageInfo
+
+func (m *MsgAddWhitelisted) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgAddWhitelisted) GetAddress() string {
+	if m != nil {
+		return m.Address
+	}
+	return ""
+}
+
+type MsgAddWhitelistedResponse struct {
+}
+
+func (m *MsgAddWhitelistedResponse) Reset()         { *m = MsgAddWhitelistedResponse{} }
+func (m *MsgAddWhitelistedResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgAddWhitelistedResponse) ProtoMessage()    {}
+func (*MsgAddWhitelistedResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8e886a756dbee256, []int{11}
+}
+func (m *MsgAddWhitelistedResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgAddWhitelistedResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgAddWhitelistedResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgAddWhitelistedResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgAddWhitelistedResponse.Merge(m, src)
+}
+func (m *MsgAddWhitelistedResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgAddWhitelistedResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgAddWhitelistedResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgAddWhitelistedResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgRequestTransaction)(nil), "humansdotai.humans.humans.MsgRequestTransaction")
 	proto.RegisterType((*MsgRequestTransactionResponse)(nil), "humansdotai.humans.humans.MsgRequestTransactionResponse")
@@ -492,45 +684,56 @@ func init() {
 	proto.RegisterType((*MsgUpdateBalanceResponse)(nil), "humansdotai.humans.humans.MsgUpdateBalanceResponse")
 	proto.RegisterType((*MsgApproveTransaction)(nil), "humansdotai.humans.humans.MsgApproveTransaction")
 	proto.RegisterType((*MsgApproveTransactionResponse)(nil), "humansdotai.humans.humans.MsgApproveTransactionResponse")
+	proto.RegisterType((*MsgTransferPoolcoin)(nil), "humansdotai.humans.humans.MsgTransferPoolcoin")
+	proto.RegisterType((*MsgTransferPoolcoinResponse)(nil), "humansdotai.humans.humans.MsgTransferPoolcoinResponse")
+	proto.RegisterType((*MsgAddWhitelisted)(nil), "humansdotai.humans.humans.MsgAddWhitelisted")
+	proto.RegisterType((*MsgAddWhitelistedResponse)(nil), "humansdotai.humans.humans.MsgAddWhitelistedResponse")
 }
 
 func init() { proto.RegisterFile("humans/tx.proto", fileDescriptor_8e886a756dbee256) }
 
 var fileDescriptor_8e886a756dbee256 = []byte{
-	// 522 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0x4d, 0x6f, 0xd3, 0x40,
-	0x10, 0x8d, 0x93, 0x92, 0xa8, 0x83, 0x4a, 0xab, 0x95, 0xa8, 0x96, 0xa8, 0x98, 0xca, 0xe2, 0x80,
-	0x04, 0x38, 0x88, 0x0a, 0x89, 0x6b, 0x8b, 0x84, 0x90, 0x50, 0x40, 0x8a, 0x80, 0x03, 0xb7, 0x8d,
-	0x3d, 0x75, 0x2c, 0xd5, 0xbb, 0xee, 0xee, 0xba, 0xa4, 0x17, 0x04, 0xff, 0x80, 0x9f, 0xc0, 0xcf,
-	0xe1, 0xd8, 0x23, 0x47, 0x94, 0x1c, 0xf9, 0x01, 0x5c, 0x91, 0xbd, 0xeb, 0x24, 0xce, 0x57, 0x9b,
-	0x53, 0x66, 0xde, 0x8e, 0xdf, 0xbe, 0x37, 0x79, 0x36, 0xec, 0x0e, 0xb2, 0x84, 0x71, 0xd5, 0xd1,
-	0x43, 0x3f, 0x95, 0x42, 0x0b, 0x72, 0xcf, 0x00, 0xa1, 0xd0, 0x2c, 0xf6, 0x4d, 0x6d, 0x7f, 0xbc,
-	0xbf, 0x0e, 0xdc, 0xed, 0xaa, 0xa8, 0x87, 0xe7, 0x19, 0x2a, 0xfd, 0x41, 0x32, 0xae, 0x58, 0xa0,
-	0x63, 0xc1, 0x09, 0x85, 0x56, 0x20, 0x91, 0x69, 0x21, 0xa9, 0x73, 0xe8, 0x3c, 0xda, 0xee, 0x95,
-	0x2d, 0x39, 0x84, 0xdb, 0x42, 0xc6, 0x51, 0xcc, 0x5f, 0x0d, 0x58, 0xcc, 0x69, 0xbd, 0x38, 0x9d,
-	0x85, 0xc8, 0x43, 0xd8, 0x31, 0xed, 0x71, 0x18, 0x4a, 0x54, 0x8a, 0x36, 0x8a, 0x99, 0x2a, 0x98,
-	0xf3, 0x68, 0x26, 0x23, 0xd4, 0x86, 0x67, 0xcb, 0xf0, 0xcc, 0x40, 0x39, 0x8f, 0x69, 0x4b, 0x9e,
-	0x5b, 0x86, 0xa7, 0x02, 0x92, 0x7d, 0x68, 0xb2, 0x44, 0x64, 0x5c, 0xd3, 0x66, 0x71, 0x6c, 0x3b,
-	0xb2, 0x07, 0x8d, 0x53, 0x44, 0xda, 0x2a, 0xc0, 0xbc, 0xf4, 0x1e, 0xc0, 0xfd, 0xa5, 0x66, 0x7b,
-	0xa8, 0x52, 0xc1, 0x15, 0x7a, 0x3f, 0x1d, 0x20, 0x5d, 0x15, 0xbd, 0xef, 0x2b, 0x94, 0x17, 0x2c,
-	0x3f, 0xfa, 0x24, 0x34, 0xae, 0xd9, 0xc5, 0x3e, 0x34, 0xf5, 0xf0, 0x0d, 0x53, 0x03, 0xbb, 0x06,
-	0xdb, 0x91, 0x03, 0xd8, 0x0e, 0x72, 0x0b, 0xef, 0x58, 0x82, 0xd6, 0xfd, 0x14, 0x20, 0x04, 0xb6,
-	0x4e, 0xa5, 0x48, 0xac, 0xe5, 0xa2, 0x26, 0x77, 0xa0, 0xae, 0x85, 0x35, 0x58, 0xd7, 0x62, 0x95,
-	0x2b, 0xef, 0x00, 0xda, 0x8b, 0x0a, 0x27, 0x06, 0xbe, 0xc2, 0x5e, 0x57, 0x45, 0x1f, 0xd3, 0x90,
-	0x69, 0x3c, 0x61, 0x67, 0x8c, 0x07, 0xeb, 0xd4, 0x57, 0x54, 0xd6, 0xe7, 0x55, 0x52, 0x68, 0xf5,
-	0x0d, 0x85, 0x75, 0x50, 0xb6, 0xf9, 0x49, 0x88, 0x41, 0x9c, 0xb0, 0x33, 0x6b, 0xa1, 0x6c, 0xbd,
-	0x36, 0xd0, 0xf9, 0xfb, 0x27, 0xda, 0xbe, 0x9b, 0xac, 0x1d, 0xa7, 0xa9, 0x14, 0x17, 0x78, 0xb3,
-	0xac, 0xad, 0xda, 0x2f, 0x85, 0x96, 0xca, 0x82, 0x60, 0x9a, 0xad, 0xb2, 0xcd, 0x3d, 0xa9, 0x38,
-	0xe2, 0x18, 0xbe, 0xc5, 0x4b, 0xab, 0x6e, 0x0a, 0xd8, 0x04, 0x2c, 0x4a, 0x28, 0x45, 0x3e, 0xff,
-	0xd7, 0x80, 0x46, 0x57, 0x45, 0xe4, 0x9b, 0x03, 0x64, 0xc9, 0x5b, 0xf1, 0xcc, 0x5f, 0xf9, 0x2e,
-	0xf9, 0x4b, 0xa3, 0xd5, 0x7e, 0xb9, 0xe9, 0x13, 0xa5, 0x14, 0xf2, 0x05, 0x76, 0xe7, 0x83, 0xf8,
-	0x74, 0x3d, 0xd9, 0xdc, 0x78, 0xfb, 0xc5, 0x46, 0xe3, 0x93, 0x8b, 0xcf, 0x61, 0xa7, 0x9a, 0xa0,
-	0xc7, 0xeb, 0x79, 0x2a, 0xc3, 0xed, 0xa3, 0x0d, 0x86, 0x27, 0x57, 0xe6, 0xeb, 0x5e, 0x12, 0x8c,
-	0x6b, 0xd6, 0xbd, 0xf8, 0xc4, 0x75, 0xeb, 0x5e, 0xfd, 0xcf, 0x9f, 0xbc, 0xfe, 0x35, 0x72, 0x9d,
-	0xab, 0x91, 0xeb, 0xfc, 0x19, 0xb9, 0xce, 0x8f, 0xb1, 0x5b, 0xbb, 0x1a, 0xbb, 0xb5, 0xdf, 0x63,
-	0xb7, 0xf6, 0xf9, 0x49, 0x14, 0xeb, 0x41, 0xd6, 0xf7, 0x03, 0x91, 0x74, 0x66, 0xd8, 0x6d, 0xdd,
-	0x19, 0x96, 0x85, 0xbe, 0x4c, 0x51, 0xf5, 0x9b, 0xc5, 0x47, 0xf7, 0xe8, 0x7f, 0x00, 0x00, 0x00,
-	0xff, 0xff, 0xdd, 0x23, 0x9c, 0xeb, 0x87, 0x05, 0x00, 0x00,
+	// 634 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x55, 0xcd, 0x6e, 0xd3, 0x40,
+	0x10, 0xae, 0xd3, 0x36, 0x51, 0x07, 0xf5, 0x87, 0x45, 0x54, 0xae, 0xdb, 0x9a, 0xca, 0xe2, 0x80,
+	0x44, 0x71, 0x11, 0x05, 0xc4, 0xb5, 0x45, 0x02, 0x24, 0x14, 0x40, 0x15, 0x3f, 0x12, 0xb7, 0x8d,
+	0xbd, 0x71, 0x56, 0x8a, 0xbd, 0xee, 0xee, 0xa6, 0xa4, 0x1c, 0x10, 0xbc, 0x01, 0x8f, 0xc0, 0xe3,
+	0x70, 0xec, 0x91, 0x23, 0x4a, 0x4e, 0x88, 0x97, 0x40, 0x6b, 0xaf, 0x9d, 0xd8, 0x49, 0x1c, 0x72,
+	0xca, 0xfc, 0xf9, 0x9b, 0xef, 0x1b, 0xcd, 0x6c, 0x60, 0xb3, 0xd3, 0x0b, 0x71, 0x24, 0x8e, 0x64,
+	0xdf, 0x8d, 0x39, 0x93, 0x0c, 0xed, 0xa4, 0x01, 0x9f, 0x49, 0x4c, 0xdd, 0xd4, 0xd6, 0x3f, 0xce,
+	0x5f, 0x03, 0x6e, 0x36, 0x45, 0x70, 0x46, 0xce, 0x7b, 0x44, 0xc8, 0xb7, 0x1c, 0x47, 0x02, 0x7b,
+	0x92, 0xb2, 0x08, 0x99, 0xd0, 0xf0, 0x38, 0xc1, 0x92, 0x71, 0xd3, 0x38, 0x30, 0xee, 0xac, 0x9d,
+	0x65, 0x2e, 0x3a, 0x80, 0x6b, 0x8c, 0xd3, 0x80, 0x46, 0x4f, 0x3b, 0x98, 0x46, 0x66, 0x2d, 0xc9,
+	0x8e, 0x87, 0xd0, 0x6d, 0x58, 0x4f, 0xdd, 0x13, 0xdf, 0xe7, 0x44, 0x08, 0x73, 0x39, 0xa9, 0x29,
+	0x06, 0x15, 0x8e, 0xc4, 0x3c, 0x20, 0x32, 0xc5, 0x59, 0x49, 0x71, 0xc6, 0x42, 0x0a, 0x27, 0x75,
+	0x33, 0x9c, 0xd5, 0x14, 0xa7, 0x10, 0x44, 0xdb, 0x50, 0xc7, 0x21, 0xeb, 0x45, 0xd2, 0xac, 0x27,
+	0x69, 0xed, 0xa1, 0x2d, 0x58, 0x6e, 0x13, 0x62, 0x36, 0x92, 0xa0, 0x32, 0x9d, 0x5b, 0xb0, 0x3f,
+	0x55, 0xec, 0x19, 0x11, 0x31, 0x8b, 0x04, 0x71, 0x7e, 0x18, 0x80, 0x9a, 0x22, 0x78, 0xdd, 0x12,
+	0x84, 0x5f, 0x60, 0x95, 0x7a, 0xcf, 0x24, 0xa9, 0x98, 0xc5, 0x36, 0xd4, 0x65, 0xff, 0x05, 0x16,
+	0x1d, 0x3d, 0x06, 0xed, 0xa1, 0x3d, 0x58, 0xf3, 0x94, 0x84, 0x57, 0x38, 0x24, 0x5a, 0xfd, 0x28,
+	0x80, 0x10, 0xac, 0xb4, 0x39, 0x0b, 0xb5, 0xe4, 0xc4, 0x46, 0x1b, 0x50, 0x93, 0x4c, 0x0b, 0xac,
+	0x49, 0x36, 0x4b, 0x95, 0xb3, 0x07, 0xd6, 0x24, 0xc3, 0x5c, 0xc0, 0x17, 0xd8, 0x6a, 0x8a, 0xe0,
+	0x5d, 0xec, 0x63, 0x49, 0x4e, 0x71, 0x17, 0x47, 0x5e, 0x15, 0xfb, 0x02, 0xcb, 0x5a, 0x99, 0xa5,
+	0x09, 0x8d, 0x56, 0x0a, 0xa1, 0x15, 0x64, 0xae, 0xca, 0xf8, 0xc4, 0xa3, 0x21, 0xee, 0x6a, 0x09,
+	0x99, 0xeb, 0x58, 0x60, 0x96, 0xfb, 0xe7, 0xdc, 0xbe, 0xa5, 0xbb, 0x76, 0x12, 0xc7, 0x9c, 0x5d,
+	0x90, 0xff, 0xdb, 0xb5, 0x59, 0xf3, 0x35, 0xa1, 0x21, 0x7a, 0x9e, 0x37, 0xda, 0xad, 0xcc, 0x55,
+	0x9a, 0x04, 0x0d, 0x22, 0xe2, 0xbf, 0x24, 0x97, 0x9a, 0xdd, 0x28, 0xa0, 0x37, 0x60, 0x92, 0x42,
+	0x4e, 0x92, 0xc2, 0x8d, 0xa6, 0x08, 0x92, 0x4c, 0x9b, 0xf0, 0x37, 0x8c, 0x75, 0x3d, 0x46, 0xab,
+	0x18, 0x22, 0x58, 0xc1, 0xbe, 0xcf, 0x35, 0xbf, 0xc4, 0x56, 0xb1, 0x98, 0xb1, 0xae, 0xa6, 0x96,
+	0xd8, 0x6a, 0x1b, 0x71, 0x28, 0x35, 0x23, 0x65, 0x3a, 0xfb, 0xb0, 0x3b, 0xa5, 0x55, 0xce, 0xe4,
+	0x39, 0x5c, 0x57, 0x54, 0x7d, 0xff, 0x43, 0x87, 0x4a, 0xd2, 0xa5, 0x42, 0x12, 0xbf, 0x82, 0x87,
+	0x09, 0x0d, 0xac, 0xaf, 0x24, 0xa5, 0x92, 0xb9, 0xce, 0x2e, 0xec, 0x4c, 0x00, 0x65, 0x5d, 0x1e,
+	0xfc, 0x59, 0x85, 0xe5, 0xa6, 0x08, 0xd0, 0x57, 0x03, 0xd0, 0x94, 0x57, 0xe0, 0xbe, 0x3b, 0xf3,
+	0xed, 0x70, 0xa7, 0x9e, 0x92, 0xf5, 0x64, 0xd1, 0x2f, 0x32, 0x2a, 0xe8, 0x13, 0x6c, 0x96, 0x0f,
+	0xef, 0x5e, 0x35, 0x58, 0xa9, 0xdc, 0x7a, 0xb4, 0x50, 0x79, 0xde, 0xf8, 0x1c, 0xd6, 0x8b, 0x17,
+	0x73, 0xb7, 0x1a, 0xa7, 0x50, 0x6c, 0x1d, 0x2f, 0x50, 0x9c, 0xb7, 0x54, 0xe3, 0x9e, 0x72, 0x08,
+	0x73, 0xc6, 0x3d, 0xf9, 0xc5, 0xbc, 0x71, 0xcf, 0xde, 0x74, 0xf4, 0x19, 0xb6, 0x26, 0xd6, 0xdc,
+	0xad, 0x46, 0x2b, 0xd7, 0x5b, 0x8f, 0x17, 0xab, 0xcf, 0x7b, 0x4b, 0xd8, 0x28, 0x2d, 0xf6, 0xe1,
+	0x1c, 0x1d, 0x85, 0x6a, 0xeb, 0xe1, 0x22, 0xd5, 0x59, 0xd7, 0xd3, 0x67, 0x3f, 0x07, 0xb6, 0x71,
+	0x35, 0xb0, 0x8d, 0xdf, 0x03, 0xdb, 0xf8, 0x3e, 0xb4, 0x97, 0xae, 0x86, 0xf6, 0xd2, 0xaf, 0xa1,
+	0xbd, 0xf4, 0xf1, 0x30, 0xa0, 0xb2, 0xd3, 0x6b, 0xb9, 0x1e, 0x0b, 0x8f, 0xc6, 0x90, 0xb5, 0x7d,
+	0xd4, 0xcf, 0x0c, 0x79, 0x19, 0x13, 0xd1, 0xaa, 0x27, 0x7f, 0xab, 0xc7, 0xff, 0x02, 0x00, 0x00,
+	0xff, 0xff, 0x4a, 0xf0, 0xd0, 0xb6, 0x69, 0x07, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -549,6 +752,8 @@ type MsgClient interface {
 	ObservationVote(ctx context.Context, in *MsgObservationVote, opts ...grpc.CallOption) (*MsgObservationVoteResponse, error)
 	UpdateBalance(ctx context.Context, in *MsgUpdateBalance, opts ...grpc.CallOption) (*MsgUpdateBalanceResponse, error)
 	ApproveTransaction(ctx context.Context, in *MsgApproveTransaction, opts ...grpc.CallOption) (*MsgApproveTransactionResponse, error)
+	TransferPoolcoin(ctx context.Context, in *MsgTransferPoolcoin, opts ...grpc.CallOption) (*MsgTransferPoolcoinResponse, error)
+	AddWhitelisted(ctx context.Context, in *MsgAddWhitelisted, opts ...grpc.CallOption) (*MsgAddWhitelistedResponse, error)
 }
 
 type msgClient struct {
@@ -595,12 +800,32 @@ func (c *msgClient) ApproveTransaction(ctx context.Context, in *MsgApproveTransa
 	return out, nil
 }
 
+func (c *msgClient) TransferPoolcoin(ctx context.Context, in *MsgTransferPoolcoin, opts ...grpc.CallOption) (*MsgTransferPoolcoinResponse, error) {
+	out := new(MsgTransferPoolcoinResponse)
+	err := c.cc.Invoke(ctx, "/humansdotai.humans.humans.Msg/TransferPoolcoin", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) AddWhitelisted(ctx context.Context, in *MsgAddWhitelisted, opts ...grpc.CallOption) (*MsgAddWhitelistedResponse, error) {
+	out := new(MsgAddWhitelistedResponse)
+	err := c.cc.Invoke(ctx, "/humansdotai.humans.humans.Msg/AddWhitelisted", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	RequestTransaction(context.Context, *MsgRequestTransaction) (*MsgRequestTransactionResponse, error)
 	ObservationVote(context.Context, *MsgObservationVote) (*MsgObservationVoteResponse, error)
 	UpdateBalance(context.Context, *MsgUpdateBalance) (*MsgUpdateBalanceResponse, error)
 	ApproveTransaction(context.Context, *MsgApproveTransaction) (*MsgApproveTransactionResponse, error)
+	TransferPoolcoin(context.Context, *MsgTransferPoolcoin) (*MsgTransferPoolcoinResponse, error)
+	AddWhitelisted(context.Context, *MsgAddWhitelisted) (*MsgAddWhitelistedResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -618,6 +843,12 @@ func (*UnimplementedMsgServer) UpdateBalance(ctx context.Context, req *MsgUpdate
 }
 func (*UnimplementedMsgServer) ApproveTransaction(ctx context.Context, req *MsgApproveTransaction) (*MsgApproveTransactionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ApproveTransaction not implemented")
+}
+func (*UnimplementedMsgServer) TransferPoolcoin(ctx context.Context, req *MsgTransferPoolcoin) (*MsgTransferPoolcoinResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TransferPoolcoin not implemented")
+}
+func (*UnimplementedMsgServer) AddWhitelisted(ctx context.Context, req *MsgAddWhitelisted) (*MsgAddWhitelistedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddWhitelisted not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -696,6 +927,42 @@ func _Msg_ApproveTransaction_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_TransferPoolcoin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgTransferPoolcoin)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).TransferPoolcoin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/humansdotai.humans.humans.Msg/TransferPoolcoin",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).TransferPoolcoin(ctx, req.(*MsgTransferPoolcoin))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_AddWhitelisted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgAddWhitelisted)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).AddWhitelisted(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/humansdotai.humans.humans.Msg/AddWhitelisted",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).AddWhitelisted(ctx, req.(*MsgAddWhitelisted))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "humansdotai.humans.humans.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -715,6 +982,14 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ApproveTransaction",
 			Handler:    _Msg_ApproveTransaction_Handler,
+		},
+		{
+			MethodName: "TransferPoolcoin",
+			Handler:    _Msg_TransferPoolcoin_Handler,
+		},
+		{
+			MethodName: "AddWhitelisted",
+			Handler:    _Msg_AddWhitelisted_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -1052,6 +1327,140 @@ func (m *MsgApproveTransactionResponse) MarshalToSizedBuffer(dAtA []byte) (int, 
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgTransferPoolcoin) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgTransferPoolcoin) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgTransferPoolcoin) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Amt) > 0 {
+		i -= len(m.Amt)
+		copy(dAtA[i:], m.Amt)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Amt)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.Pool) > 0 {
+		i -= len(m.Pool)
+		copy(dAtA[i:], m.Pool)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Pool)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.Addr) > 0 {
+		i -= len(m.Addr)
+		copy(dAtA[i:], m.Addr)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Addr)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgTransferPoolcoinResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgTransferPoolcoinResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgTransferPoolcoinResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgAddWhitelisted) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgAddWhitelisted) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgAddWhitelisted) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Address) > 0 {
+		i -= len(m.Address)
+		copy(dAtA[i:], m.Address)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Address)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgAddWhitelistedResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgAddWhitelistedResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgAddWhitelistedResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -1211,6 +1620,66 @@ func (m *MsgApproveTransaction) Size() (n int) {
 }
 
 func (m *MsgApproveTransactionResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgTransferPoolcoin) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Addr)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Pool)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Amt)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgTransferPoolcoinResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgAddWhitelisted) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Address)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgAddWhitelistedResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2274,6 +2743,398 @@ func (m *MsgApproveTransactionResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgApproveTransactionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgTransferPoolcoin) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgTransferPoolcoin: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgTransferPoolcoin: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Addr", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Addr = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pool", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Pool = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Amt", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Amt = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgTransferPoolcoinResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgTransferPoolcoinResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgTransferPoolcoinResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgAddWhitelisted) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgAddWhitelisted: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgAddWhitelisted: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Address", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Address = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgAddWhitelistedResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgAddWhitelistedResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgAddWhitelistedResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

@@ -50686,11 +50686,15 @@ definitions:
     title: |-
       QuerySmartContractStateResponse is the response type for the
       Query/SmartContractState RPC method
+  humansdotai.humans.humans.MsgAddWhitelistedResponse:
+    type: object
   humansdotai.humans.humans.MsgApproveTransactionResponse:
     type: object
   humansdotai.humans.humans.MsgObservationVoteResponse:
     type: object
   humansdotai.humans.humans.MsgRequestTransactionResponse:
+    type: object
+  humansdotai.humans.humans.MsgTransferPoolcoinResponse:
     type: object
   humansdotai.humans.humans.MsgUpdateBalanceResponse:
     type: object
