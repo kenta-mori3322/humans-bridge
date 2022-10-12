@@ -10,6 +10,7 @@ import { KeysignVoteData } from "../humans/keysign_vote_data";
 import { ObserveVote } from "../humans/observe_vote";
 import { PoolBalance } from "../humans/pool_balance";
 import { Pubkeys } from "../humans/pubkeys";
+import { Superadmin } from "../humans/superadmin";
 
 export const protobufPackage = "humansdotai.humans.humans";
 
@@ -104,6 +105,23 @@ export interface QueryAllPubkeysRequest {
 
 export interface QueryAllPubkeysResponse {
   pubkeys: Pubkeys[];
+  pagination: PageResponse | undefined;
+}
+
+export interface QueryGetSuperadminRequest {
+  index: string;
+}
+
+export interface QueryGetSuperadminResponse {
+  superadmin: Superadmin | undefined;
+}
+
+export interface QueryAllSuperadminRequest {
+  pagination: PageRequest | undefined;
+}
+
+export interface QueryAllSuperadminResponse {
+  superadmin: Superadmin[];
   pagination: PageResponse | undefined;
 }
 
@@ -1780,6 +1798,320 @@ export const QueryAllPubkeysResponse = {
   },
 };
 
+const baseQueryGetSuperadminRequest: object = { index: "" };
+
+export const QueryGetSuperadminRequest = {
+  encode(
+    message: QueryGetSuperadminRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.index !== "") {
+      writer.uint32(10).string(message.index);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryGetSuperadminRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryGetSuperadminRequest,
+    } as QueryGetSuperadminRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.index = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetSuperadminRequest {
+    const message = {
+      ...baseQueryGetSuperadminRequest,
+    } as QueryGetSuperadminRequest;
+    if (object.index !== undefined && object.index !== null) {
+      message.index = String(object.index);
+    } else {
+      message.index = "";
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetSuperadminRequest): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = message.index);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetSuperadminRequest>
+  ): QueryGetSuperadminRequest {
+    const message = {
+      ...baseQueryGetSuperadminRequest,
+    } as QueryGetSuperadminRequest;
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    } else {
+      message.index = "";
+    }
+    return message;
+  },
+};
+
+const baseQueryGetSuperadminResponse: object = {};
+
+export const QueryGetSuperadminResponse = {
+  encode(
+    message: QueryGetSuperadminResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.superadmin !== undefined) {
+      Superadmin.encode(message.superadmin, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryGetSuperadminResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryGetSuperadminResponse,
+    } as QueryGetSuperadminResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.superadmin = Superadmin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetSuperadminResponse {
+    const message = {
+      ...baseQueryGetSuperadminResponse,
+    } as QueryGetSuperadminResponse;
+    if (object.superadmin !== undefined && object.superadmin !== null) {
+      message.superadmin = Superadmin.fromJSON(object.superadmin);
+    } else {
+      message.superadmin = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetSuperadminResponse): unknown {
+    const obj: any = {};
+    message.superadmin !== undefined &&
+      (obj.superadmin = message.superadmin
+        ? Superadmin.toJSON(message.superadmin)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetSuperadminResponse>
+  ): QueryGetSuperadminResponse {
+    const message = {
+      ...baseQueryGetSuperadminResponse,
+    } as QueryGetSuperadminResponse;
+    if (object.superadmin !== undefined && object.superadmin !== null) {
+      message.superadmin = Superadmin.fromPartial(object.superadmin);
+    } else {
+      message.superadmin = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllSuperadminRequest: object = {};
+
+export const QueryAllSuperadminRequest = {
+  encode(
+    message: QueryAllSuperadminRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryAllSuperadminRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryAllSuperadminRequest,
+    } as QueryAllSuperadminRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllSuperadminRequest {
+    const message = {
+      ...baseQueryAllSuperadminRequest,
+    } as QueryAllSuperadminRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllSuperadminRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllSuperadminRequest>
+  ): QueryAllSuperadminRequest {
+    const message = {
+      ...baseQueryAllSuperadminRequest,
+    } as QueryAllSuperadminRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllSuperadminResponse: object = {};
+
+export const QueryAllSuperadminResponse = {
+  encode(
+    message: QueryAllSuperadminResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    for (const v of message.superadmin) {
+      Superadmin.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryAllSuperadminResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryAllSuperadminResponse,
+    } as QueryAllSuperadminResponse;
+    message.superadmin = [];
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.superadmin.push(Superadmin.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllSuperadminResponse {
+    const message = {
+      ...baseQueryAllSuperadminResponse,
+    } as QueryAllSuperadminResponse;
+    message.superadmin = [];
+    if (object.superadmin !== undefined && object.superadmin !== null) {
+      for (const e of object.superadmin) {
+        message.superadmin.push(Superadmin.fromJSON(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllSuperadminResponse): unknown {
+    const obj: any = {};
+    if (message.superadmin) {
+      obj.superadmin = message.superadmin.map((e) =>
+        e ? Superadmin.toJSON(e) : undefined
+      );
+    } else {
+      obj.superadmin = [];
+    }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllSuperadminResponse>
+  ): QueryAllSuperadminResponse {
+    const message = {
+      ...baseQueryAllSuperadminResponse,
+    } as QueryAllSuperadminResponse;
+    message.superadmin = [];
+    if (object.superadmin !== undefined && object.superadmin !== null) {
+      for (const e of object.superadmin) {
+        message.superadmin.push(Superadmin.fromPartial(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -1820,6 +2152,14 @@ export interface Query {
   Pubkeys(request: QueryGetPubkeysRequest): Promise<QueryGetPubkeysResponse>;
   /** Queries a list of Pubkeys items. */
   PubkeysAll(request: QueryAllPubkeysRequest): Promise<QueryAllPubkeysResponse>;
+  /** Queries a Superadmin by index. */
+  Superadmin(
+    request: QueryGetSuperadminRequest
+  ): Promise<QueryGetSuperadminResponse>;
+  /** Queries a list of Superadmin items. */
+  SuperadminAll(
+    request: QueryAllSuperadminRequest
+  ): Promise<QueryAllSuperadminResponse>;
 }
 
 export class QueryClientImpl implements Query {
@@ -1972,6 +2312,34 @@ export class QueryClientImpl implements Query {
     );
     return promise.then((data) =>
       QueryAllPubkeysResponse.decode(new Reader(data))
+    );
+  }
+
+  Superadmin(
+    request: QueryGetSuperadminRequest
+  ): Promise<QueryGetSuperadminResponse> {
+    const data = QueryGetSuperadminRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "humansdotai.humans.humans.Query",
+      "Superadmin",
+      data
+    );
+    return promise.then((data) =>
+      QueryGetSuperadminResponse.decode(new Reader(data))
+    );
+  }
+
+  SuperadminAll(
+    request: QueryAllSuperadminRequest
+  ): Promise<QueryAllSuperadminResponse> {
+    const data = QueryAllSuperadminRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "humansdotai.humans.humans.Query",
+      "SuperadminAll",
+      data
+    );
+    return promise.then((data) =>
+      QueryAllSuperadminResponse.decode(new Reader(data))
     );
   }
 }
