@@ -24,21 +24,45 @@ export interface HumansKeysignVoteData {
   txTime?: string;
 }
 
-export type HumansMsgAddWhitelistedResponse = object;
+export interface HumansMsgAddWhitelistedResponse {
+  code?: string;
+  msg?: string;
+}
 
-export type HumansMsgApproveTransactionResponse = object;
+export interface HumansMsgApproveTransactionResponse {
+  code?: string;
+  msg?: string;
+}
 
-export type HumansMsgKeysignVoteResponse = object;
+export interface HumansMsgKeysignVoteResponse {
+  code?: string;
+  msg?: string;
+}
 
-export type HumansMsgObservationVoteResponse = object;
+export interface HumansMsgObservationVoteResponse {
+  code?: string;
+  msg?: string;
+}
 
-export type HumansMsgRequestTransactionResponse = object;
+export interface HumansMsgRequestTransactionResponse {
+  code?: string;
+  msg?: string;
+}
 
-export type HumansMsgSetAdminResponse = object;
+export interface HumansMsgSetAdminResponse {
+  code?: string;
+  msg?: string;
+}
 
-export type HumansMsgTransferPoolcoinResponse = object;
+export interface HumansMsgTransferPoolcoinResponse {
+  code?: string;
+  msg?: string;
+}
 
-export type HumansMsgUpdateBalanceResponse = object;
+export interface HumansMsgUpdateBalanceResponse {
+  code?: string;
+  msg?: string;
+}
 
 export interface HumansObserveVote {
   index?: string;

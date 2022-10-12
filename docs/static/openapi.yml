@@ -22838,6 +22838,16 @@ paths:
           in: query
           required: false
           type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
       tags:
         - Query
   '/humansdotai/humans/humans/fee_balance/{index}':
@@ -23000,6 +23010,16 @@ paths:
             when key
 
             is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -23175,6 +23195,16 @@ paths:
             when key
 
             is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -23387,6 +23417,16 @@ paths:
           in: query
           required: false
           type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
       tags:
         - Query
   '/humansdotai/humans/humans/pool_balance/{index}':
@@ -23552,6 +23592,16 @@ paths:
           in: query
           required: false
           type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
       tags:
         - Query
   '/humansdotai/humans/humans/pubkeys/{index}':
@@ -23710,6 +23760,16 @@ paths:
             when key
 
             is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -23885,6 +23945,16 @@ paths:
             when key
 
             is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -24066,6 +24136,16 @@ paths:
             when key
 
             is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -52072,20 +52152,60 @@ definitions:
         type: string
   humansdotai.humans.humans.MsgAddWhitelistedResponse:
     type: object
+    properties:
+      code:
+        type: string
+      msg:
+        type: string
   humansdotai.humans.humans.MsgApproveTransactionResponse:
     type: object
+    properties:
+      code:
+        type: string
+      msg:
+        type: string
   humansdotai.humans.humans.MsgKeysignVoteResponse:
     type: object
+    properties:
+      code:
+        type: string
+      msg:
+        type: string
   humansdotai.humans.humans.MsgObservationVoteResponse:
     type: object
+    properties:
+      code:
+        type: string
+      msg:
+        type: string
   humansdotai.humans.humans.MsgRequestTransactionResponse:
     type: object
+    properties:
+      code:
+        type: string
+      msg:
+        type: string
   humansdotai.humans.humans.MsgSetAdminResponse:
     type: object
+    properties:
+      code:
+        type: string
+      msg:
+        type: string
   humansdotai.humans.humans.MsgTransferPoolcoinResponse:
     type: object
+    properties:
+      code:
+        type: string
+      msg:
+        type: string
   humansdotai.humans.humans.MsgUpdateBalanceResponse:
     type: object
+    properties:
+      code:
+        type: string
+      msg:
+        type: string
   humansdotai.humans.humans.ObserveVote:
     type: object
     properties:
