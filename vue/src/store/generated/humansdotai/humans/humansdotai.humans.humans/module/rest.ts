@@ -9,6 +9,8 @@
  * ---------------------------------------------------------------
  */
 
+export type HumansMsgRequestTransactionResponse = object;
+
 /**
  * Params defines the parameters for the module.
  */

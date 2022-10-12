@@ -7,7 +7,21 @@ option go_package = "github.com/humansdotai/humans/x/humans/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc RequestTransaction(MsgRequestTransaction) returns (MsgRequestTransactionResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgRequestTransaction {
+  string creator = 1;
+  string originChain = 2;
+  string originAddress = 3;
+  string targetChain = 4;
+  string targetAddress = 5;
+  string amount = 6;
+  string fee = 7;
+}
+
+message MsgRequestTransactionResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
