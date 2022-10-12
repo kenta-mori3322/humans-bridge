@@ -8,6 +8,7 @@ option go_package = "github.com/humansdotai/humans/x/humans/types";
 // Msg defines the Msg service.
 service Msg {
       rpc RequestTransaction(MsgRequestTransaction) returns (MsgRequestTransactionResponse);
+  rpc ObservationVote(MsgObservationVote) returns (MsgObservationVoteResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -22,6 +23,18 @@ message MsgRequestTransaction {
 }
 
 message MsgRequestTransactionResponse {
+}
+
+message MsgObservationVote {
+  string creator = 1;
+  string txHash = 2;
+  string chainName = 3;
+  string from = 4;
+  string to = 5;
+  string amount = 6;
+}
+
+message MsgObservationVoteResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
