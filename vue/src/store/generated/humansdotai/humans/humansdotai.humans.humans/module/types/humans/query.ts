@@ -12,6 +12,7 @@ import { PoolBalance } from "../humans/pool_balance";
 import { Pubkeys } from "../humans/pubkeys";
 import { Superadmin } from "../humans/superadmin";
 import { TransactionData } from "../humans/transaction_data";
+import { WhitelistedNode } from "../humans/whitelisted_node";
 
 export const protobufPackage = "humansdotai.humans.humans";
 
@@ -140,6 +141,23 @@ export interface QueryAllTransactionDataRequest {
 
 export interface QueryAllTransactionDataResponse {
   transactionData: TransactionData[];
+  pagination: PageResponse | undefined;
+}
+
+export interface QueryGetWhitelistedNodeRequest {
+  index: string;
+}
+
+export interface QueryGetWhitelistedNodeResponse {
+  whitelistedNode: WhitelistedNode | undefined;
+}
+
+export interface QueryAllWhitelistedNodeRequest {
+  pagination: PageRequest | undefined;
+}
+
+export interface QueryAllWhitelistedNodeResponse {
+  whitelistedNode: WhitelistedNode[];
   pagination: PageResponse | undefined;
 }
 
@@ -2468,6 +2486,344 @@ export const QueryAllTransactionDataResponse = {
   },
 };
 
+const baseQueryGetWhitelistedNodeRequest: object = { index: "" };
+
+export const QueryGetWhitelistedNodeRequest = {
+  encode(
+    message: QueryGetWhitelistedNodeRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.index !== "") {
+      writer.uint32(10).string(message.index);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryGetWhitelistedNodeRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryGetWhitelistedNodeRequest,
+    } as QueryGetWhitelistedNodeRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.index = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetWhitelistedNodeRequest {
+    const message = {
+      ...baseQueryGetWhitelistedNodeRequest,
+    } as QueryGetWhitelistedNodeRequest;
+    if (object.index !== undefined && object.index !== null) {
+      message.index = String(object.index);
+    } else {
+      message.index = "";
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetWhitelistedNodeRequest): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = message.index);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetWhitelistedNodeRequest>
+  ): QueryGetWhitelistedNodeRequest {
+    const message = {
+      ...baseQueryGetWhitelistedNodeRequest,
+    } as QueryGetWhitelistedNodeRequest;
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    } else {
+      message.index = "";
+    }
+    return message;
+  },
+};
+
+const baseQueryGetWhitelistedNodeResponse: object = {};
+
+export const QueryGetWhitelistedNodeResponse = {
+  encode(
+    message: QueryGetWhitelistedNodeResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.whitelistedNode !== undefined) {
+      WhitelistedNode.encode(
+        message.whitelistedNode,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryGetWhitelistedNodeResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryGetWhitelistedNodeResponse,
+    } as QueryGetWhitelistedNodeResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.whitelistedNode = WhitelistedNode.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetWhitelistedNodeResponse {
+    const message = {
+      ...baseQueryGetWhitelistedNodeResponse,
+    } as QueryGetWhitelistedNodeResponse;
+    if (
+      object.whitelistedNode !== undefined &&
+      object.whitelistedNode !== null
+    ) {
+      message.whitelistedNode = WhitelistedNode.fromJSON(
+        object.whitelistedNode
+      );
+    } else {
+      message.whitelistedNode = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetWhitelistedNodeResponse): unknown {
+    const obj: any = {};
+    message.whitelistedNode !== undefined &&
+      (obj.whitelistedNode = message.whitelistedNode
+        ? WhitelistedNode.toJSON(message.whitelistedNode)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetWhitelistedNodeResponse>
+  ): QueryGetWhitelistedNodeResponse {
+    const message = {
+      ...baseQueryGetWhitelistedNodeResponse,
+    } as QueryGetWhitelistedNodeResponse;
+    if (
+      object.whitelistedNode !== undefined &&
+      object.whitelistedNode !== null
+    ) {
+      message.whitelistedNode = WhitelistedNode.fromPartial(
+        object.whitelistedNode
+      );
+    } else {
+      message.whitelistedNode = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllWhitelistedNodeRequest: object = {};
+
+export const QueryAllWhitelistedNodeRequest = {
+  encode(
+    message: QueryAllWhitelistedNodeRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryAllWhitelistedNodeRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryAllWhitelistedNodeRequest,
+    } as QueryAllWhitelistedNodeRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllWhitelistedNodeRequest {
+    const message = {
+      ...baseQueryAllWhitelistedNodeRequest,
+    } as QueryAllWhitelistedNodeRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllWhitelistedNodeRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllWhitelistedNodeRequest>
+  ): QueryAllWhitelistedNodeRequest {
+    const message = {
+      ...baseQueryAllWhitelistedNodeRequest,
+    } as QueryAllWhitelistedNodeRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllWhitelistedNodeResponse: object = {};
+
+export const QueryAllWhitelistedNodeResponse = {
+  encode(
+    message: QueryAllWhitelistedNodeResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    for (const v of message.whitelistedNode) {
+      WhitelistedNode.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryAllWhitelistedNodeResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryAllWhitelistedNodeResponse,
+    } as QueryAllWhitelistedNodeResponse;
+    message.whitelistedNode = [];
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.whitelistedNode.push(
+            WhitelistedNode.decode(reader, reader.uint32())
+          );
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllWhitelistedNodeResponse {
+    const message = {
+      ...baseQueryAllWhitelistedNodeResponse,
+    } as QueryAllWhitelistedNodeResponse;
+    message.whitelistedNode = [];
+    if (
+      object.whitelistedNode !== undefined &&
+      object.whitelistedNode !== null
+    ) {
+      for (const e of object.whitelistedNode) {
+        message.whitelistedNode.push(WhitelistedNode.fromJSON(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllWhitelistedNodeResponse): unknown {
+    const obj: any = {};
+    if (message.whitelistedNode) {
+      obj.whitelistedNode = message.whitelistedNode.map((e) =>
+        e ? WhitelistedNode.toJSON(e) : undefined
+      );
+    } else {
+      obj.whitelistedNode = [];
+    }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllWhitelistedNodeResponse>
+  ): QueryAllWhitelistedNodeResponse {
+    const message = {
+      ...baseQueryAllWhitelistedNodeResponse,
+    } as QueryAllWhitelistedNodeResponse;
+    message.whitelistedNode = [];
+    if (
+      object.whitelistedNode !== undefined &&
+      object.whitelistedNode !== null
+    ) {
+      for (const e of object.whitelistedNode) {
+        message.whitelistedNode.push(WhitelistedNode.fromPartial(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -2524,6 +2880,14 @@ export interface Query {
   TransactionDataAll(
     request: QueryAllTransactionDataRequest
   ): Promise<QueryAllTransactionDataResponse>;
+  /** Queries a WhitelistedNode by index. */
+  WhitelistedNode(
+    request: QueryGetWhitelistedNodeRequest
+  ): Promise<QueryGetWhitelistedNodeResponse>;
+  /** Queries a list of WhitelistedNode items. */
+  WhitelistedNodeAll(
+    request: QueryAllWhitelistedNodeRequest
+  ): Promise<QueryAllWhitelistedNodeResponse>;
 }
 
 export class QueryClientImpl implements Query {
@@ -2732,6 +3096,34 @@ export class QueryClientImpl implements Query {
     );
     return promise.then((data) =>
       QueryAllTransactionDataResponse.decode(new Reader(data))
+    );
+  }
+
+  WhitelistedNode(
+    request: QueryGetWhitelistedNodeRequest
+  ): Promise<QueryGetWhitelistedNodeResponse> {
+    const data = QueryGetWhitelistedNodeRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "humansdotai.humans.humans.Query",
+      "WhitelistedNode",
+      data
+    );
+    return promise.then((data) =>
+      QueryGetWhitelistedNodeResponse.decode(new Reader(data))
+    );
+  }
+
+  WhitelistedNodeAll(
+    request: QueryAllWhitelistedNodeRequest
+  ): Promise<QueryAllWhitelistedNodeResponse> {
+    const data = QueryAllWhitelistedNodeRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "humansdotai.humans.humans.Query",
+      "WhitelistedNodeAll",
+      data
+    );
+    return promise.then((data) =>
+      QueryAllWhitelistedNodeResponse.decode(new Reader(data))
     );
   }
 }

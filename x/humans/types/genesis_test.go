@@ -78,6 +78,14 @@ func TestGenesisState_Validate(t *testing.T) {
 						Index: "1",
 					},
 				},
+				WhitelistedNodeList: []types.WhitelistedNode{
+					{
+						Index: "0",
+					},
+					{
+						Index: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -170,6 +178,20 @@ func TestGenesisState_Validate(t *testing.T) {
 			desc: "duplicated transactionData",
 			genState: &types.GenesisState{
 				TransactionDataList: []types.TransactionData{
+					{
+						Index: "0",
+					},
+					{
+						Index: "0",
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated whitelistedNode",
+			genState: &types.GenesisState{
+				WhitelistedNodeList: []types.WhitelistedNode{
 					{
 						Index: "0",
 					},

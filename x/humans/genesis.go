@@ -37,6 +37,10 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 	for _, elem := range genState.TransactionDataList {
 		k.SetTransactionData(ctx, elem)
 	}
+	// Set all the whitelistedNode
+	for _, elem := range genState.WhitelistedNodeList {
+		k.SetWhitelistedNode(ctx, elem)
+	}
 	// this line is used by starport scaffolding # genesis/module/init
 	k.SetParams(ctx, genState.Params)
 }
@@ -53,6 +57,7 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis.PubkeysList = k.GetAllPubkeys(ctx)
 	genesis.SuperadminList = k.GetAllSuperadmin(ctx)
 	genesis.TransactionDataList = k.GetAllTransactionData(ctx)
+	genesis.WhitelistedNodeList = k.GetAllWhitelistedNode(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis
